@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>My First React App</title>
 	</head>
 	<body>
 	<div id="app"></div>
@@ -11,17 +11,30 @@
 	     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
 	     <script type="text/babel">
 	 	 class GoTeam extends React.Component {
+		constructor(props){
+					  super(props);
+					  this.state = {
+						 name: 'Super Bowl 53'
+					  }
+					}
+		changeTeam(event) {
+			this.setstate({
+				name: event.target.value
+			})
+		}	
+					
 		render() {
 			return (
 				<div>
+					<h3>{this.state.name}</h3>
 					Go {this.props.team}
+					<input type='text' id='name' onChange={this.changeTeam.bind(this)} />
 				</div>
 			);
 		}
 	}
-
 	ReactDOM.render(
-		<GoTeam team="Rams!" />,
+		<GoTeam team='' />,
 		document.getElementById('app')
 	);
 	
